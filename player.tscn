@@ -1,8 +1,9 @@
-[gd_scene load_steps=57 format=3 uid="uid://dmqs76oj7hyhh"]
+[gd_scene load_steps=58 format=3 uid="uid://dmqs76oj7hyhh"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_hc75s"]
 [ext_resource type="Texture2D" uid="uid://bqa80u8e6v4y8" path="res://src/copywrite/link.png" id="2_wvrhd"]
 [ext_resource type="Script" path="res://PlayerCamera.gd" id="3_e2nol"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="4_a4ckr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0xdnh"]
 atlas = ExtResource("2_wvrhd")
@@ -454,3 +455,13 @@ rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("3_e2nol")
+
+[node name="touch" type="CanvasLayer" parent="."]
+
+[node name="Virtual Joystick" parent="touch" instance=ExtResource("4_a4ckr")]
+visible = false
+offset_left = 1.0
+offset_top = -171.0
+offset_right = 238.0
+offset_bottom = 57.0
+scale = Vector2(0.75, 0.75)

@@ -1,4 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb6v6bvgv42la"]
+[gd_scene load_steps=10 format=3 uid="uid://cb6v6bvgv42la"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_afm8v"]
+[ext_resource type="PackedScene" uid="uid://dmqs76oj7hyhh" path="res://player.tscn" id="2_2dixu"]
+[ext_resource type="PackedScene" uid="uid://clvp4cain5340" path="res://map.tscn" id="3_p2t0r"]
+[ext_resource type="PackedScene" uid="uid://ccm184do3b5sh" path="res://mapeffects.tscn" id="4_25q3i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8ppx"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,8 +27,31 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_color = Color(1, 1, 1, 1)
 
 [node name="menu" type="Node"]
+script = ExtResource("1_afm8v")
+player = ExtResource("2_2dixu")
+map = ExtResource("3_p2t0r")
+mapeffects = ExtResource("4_25q3i")
 
-[node name="Label" type="Label" parent="."]
+[node name="MapInstance" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="SpawnPosition" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+position = Vector2(200, 150)
+
+[node name="MapEffectsInstance" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Menu" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Menu"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0
 offset_right = 192.0
@@ -32,14 +60,20 @@ theme_override_font_sizes/font_size = 80
 text = "UwU"
 vertical_alignment = 1
 
-[node name="main2" type="Control" parent="."]
-visible = false
+[node name="DisplayPublicIP" type="Label" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 23.0
+
+[node name="main2" type="Control" parent="Menu"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="SinglePlayer" type="Button" parent="main2"]
+[node name="SinglePlayer" type="Button" parent="Menu/main2"]
+layout_mode = 0
 offset_top = 193.0
 offset_right = 207.0
 offset_bottom = 220.0
@@ -50,7 +84,8 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_hq8p3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6b3cf")
 text = "Singleplayer"
 
-[node name="MultiPlayer" type="Button" parent="main2"]
+[node name="MultiPlayer" type="Button" parent="Menu/main2"]
+layout_mode = 0
 offset_top = 221.0
 offset_right = 207.0
 offset_bottom = 248.0
@@ -61,13 +96,15 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_hq8p3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6b3cf")
 text = "Multiplayer"
 
-[node name="Multiplayer" type="Control" parent="."]
+[node name="Multiplayer" type="Control" parent="Menu"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="host" type="Button" parent="Multiplayer"]
+[node name="host" type="Button" parent="Menu/Multiplayer"]
+layout_mode = 0
 offset_top = 171.0
 offset_right = 207.0
 offset_bottom = 198.0
@@ -78,7 +115,8 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_hq8p3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6b3cf")
 text = "Host Game"
 
-[node name="host2" type="Button" parent="Multiplayer"]
+[node name="host2" type="Button" parent="Menu/Multiplayer"]
+layout_mode = 0
 offset_top = 272.0
 offset_right = 207.0
 offset_bottom = 299.0
@@ -89,7 +127,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_hq8p3")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6b3cf")
 text = "Join Game"
 
-[node name="LineEdit" type="LineEdit" parent="Multiplayer"]
+[node name="LineEdit" type="LineEdit" parent="Menu/Multiplayer"]
 layout_mode = 0
 offset_top = 238.0
 offset_right = 208.0
@@ -97,3 +135,6 @@ offset_bottom = 269.0
 text = "Player"
 placeholder_text = "User"
 alignment = 1
+
+[connection signal="pressed" from="Menu/main2/SinglePlayer" to="." method="_on_single_player_button_pressed"]
+[connection signal="pressed" from="Menu/main2/MultiPlayer" to="." method="_on_multi_player_pressed"]

@@ -25,12 +25,18 @@ window/size/viewport_width=768
 window/size/viewport_height=432
 window/size/resizable=false
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [open_ai]
 
 api_key="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"
 
 [rendering]
 
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
