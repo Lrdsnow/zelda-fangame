@@ -1,0 +1,7 @@
+{ "name":"zelda_repo", "pkgs":[
+  "zelda"
+], "games":[
+  "zelda"
+], "tools":[
+  ""
+], "url":"https://raw.githubusercontent.com/Lrdsnow/zelda-fangame/main/repo" }

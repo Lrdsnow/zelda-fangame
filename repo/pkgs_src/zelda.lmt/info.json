@@ -1,0 +1,6 @@
+{
+    "name":"zelda",
+    "arch":["aarch64", "x86_64"],
+    "game":true,
+    "version":1.0
+}

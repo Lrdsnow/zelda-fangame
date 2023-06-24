@@ -402,15 +402,19 @@ animations = [{
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/sync = true
+properties/0/watch = false
 properties/1/path = NodePath(".:username")
 properties/1/spawn = true
 properties/1/sync = true
+properties/1/watch = false
 properties/2/path = NodePath("frames:animation")
 properties/2/spawn = true
 properties/2/sync = true
+properties/2/watch = false
 properties/3/path = NodePath("frames:frame")
 properties/3/spawn = true
 properties/3/sync = true
+properties/3/watch = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ke55y"]
 radius = 26.0085
